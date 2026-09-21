@@ -58,16 +58,16 @@ export default function AboutSection() {
             </FadeIn>
 
             {/* Stats: compact row under the text */}
-            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 auto-rows-fr">
               {STATS.map((stat, i) => (
-                <FadeIn key={stat.label} delay={0.4 + i * 0.08} y={20}>
-                  <div className="card-glass glow-border rounded-xl px-4 py-4 flex flex-col gap-1">
+                <FadeIn key={stat.label} delay={0.4 + i * 0.08} y={20} className="h-full">
+                  <div className="card-glass glow-border rounded-xl px-3 py-4 h-full flex flex-col justify-between gap-1">
                     <CountUp
                       value={stat.value}
                       className="accent-text font-black leading-none"
                       style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)' }}
                     />
-                    <span className="text-[#c8d8e8] text-[10px] uppercase tracking-[0.2em] opacity-50 font-medium">
+                    <span className="text-[#c8d8e8] text-[9px] uppercase tracking-[0.12em] opacity-50 font-medium whitespace-nowrap">
                       {stat.label}
                     </span>
                   </div>
