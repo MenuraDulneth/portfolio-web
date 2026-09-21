@@ -90,7 +90,7 @@ export default function ProjectPageLayout({
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         className="min-h-screen"
-        style={{ background: '#050508' }}
+        style={{ background: 'transparent' }}
       >
         {/* ── Top nav ─────────────────────────────────────────────────────── */}
         <div
@@ -115,14 +115,6 @@ export default function ProjectPageLayout({
 
         {/* ── Hero banner ──────────────────────────────────────────────────── */}
         <div className="relative px-6 md:px-10 pt-16 pb-20 overflow-hidden">
-          {/* Glow blob */}
-          <div
-            className="absolute top-0 left-1/3 w-[600px] h-[400px] rounded-full opacity-10 pointer-events-none"
-            style={{
-              background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-              filter: 'blur(60px)',
-            }}
-          />
           {/* Grid */}
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -163,13 +155,13 @@ export default function ProjectPageLayout({
             </motion.div>
 
             {/* Number + title */}
-            <div className="flex items-start gap-9 mb-10">
+            <div className="flex items-start gap-6 sm:gap-9 mb-10">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.05, duration: 0.8 }}
                 className="font-black leading-none select-none hidden sm:block"
-                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)', color: `${color}25` }}
+                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)', color: `${color}b3`, textShadow: `0 0 40px ${color}66` }}
               >
                 {number}
               </motion.span>
@@ -177,9 +169,9 @@ export default function ProjectPageLayout({
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.7 }}
-                className="font-black uppercase leading-none tracking-tight"
+                className="font-black uppercase leading-none tracking-tight break-words min-w-0"
                 style={{
-                  fontSize: 'clamp(2.5rem, 7vw, 6rem)',
+                  fontSize: 'clamp(2.25rem, 7vw, 6rem)',
                   background: `linear-gradient(160deg, #4a4f5e 0%, #c8d8e8 60%, ${color}99 100%)`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -290,11 +282,7 @@ export default function ProjectPageLayout({
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.7 }}
-                className="rounded-2xl p-6 md:p-8"
-                style={{
-                  background: 'rgba(255,255,255,0.025)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}
+                className="card-glass card-solid rounded-2xl p-6 md:p-8"
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-5 h-px" style={{ background: color }} />
@@ -318,9 +306,8 @@ export default function ProjectPageLayout({
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 0.7 }}
-                className="rounded-2xl p-6 md:p-8"
+                className="card-glass card-solid rounded-2xl p-6 md:p-8"
                 style={{
-                  background: 'rgba(255,255,255,0.025)',
                   border: `1px solid ${color}20`,
                 }}
               >
@@ -361,11 +348,7 @@ export default function ProjectPageLayout({
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.55, duration: 0.7 }}
-                  className="rounded-2xl p-6 md:p-8"
-                  style={{
-                    background: 'rgba(255,255,255,0.025)',
-                    border: '1px solid rgba(255,255,255,0.06)',
-                  }}
+                  className="card-glass card-solid rounded-2xl p-6 md:p-8"
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-5 h-px" style={{ background: color }} />
@@ -405,11 +388,7 @@ export default function ProjectPageLayout({
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4, duration: 0.7 }}
-                className="rounded-2xl p-6"
-                style={{
-                  background: 'rgba(255,255,255,0.025)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}
+                className="card-glass card-solid rounded-2xl p-6"
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-5 h-px" style={{ background: color }} />
@@ -443,9 +422,8 @@ export default function ProjectPageLayout({
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.7 }}
-                className="rounded-2xl p-6"
+                className="card-glass card-solid rounded-2xl p-6"
                 style={{
-                  background: 'rgba(255,255,255,0.025)',
                   border: `1px solid ${color}20`,
                 }}
               >
@@ -476,12 +454,8 @@ export default function ProjectPageLayout({
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6, duration: 0.7 }}
-                className="rounded-2xl p-6 flex items-center gap-4"
+                className="card-glass card-solid rounded-2xl p-6 flex items-center gap-4"
                 style={{
-                  background:
-                    status === 'In Progress'
-                      ? 'rgba(245,158,11,0.06)'
-                      : 'rgba(16,185,129,0.06)',
                   border: `1px solid ${status === 'In Progress' ? '#f59e0b' : '#10b981'}25`,
                 }}
               >
@@ -511,11 +485,7 @@ export default function ProjectPageLayout({
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.65, duration: 0.7 }}
-                  className="rounded-2xl p-6 flex flex-col gap-3"
-                  style={{
-                    background: 'rgba(255,255,255,0.025)',
-                    border: '1px solid rgba(255,255,255,0.06)',
-                  }}
+                  className="card-glass card-solid rounded-2xl p-6 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-5 h-px" style={{ background: color }} />
@@ -562,11 +532,7 @@ export default function ProjectPageLayout({
             </p>
             <button
               onClick={onBack}
-              className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl text-sm font-medium uppercase tracking-widest text-[#c8d8e8] transition-all duration-300 hover:scale-[1.01]"
-              style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.06)',
-              }}
+              className="card-glass card-solid w-full flex items-center justify-center gap-2 py-4 rounded-2xl text-sm font-medium uppercase tracking-widest text-[#c8d8e8] transition-all duration-300 hover:scale-[1.01]"
             >
               <ArrowLeft size={14} />
               Back to all projects

@@ -1,13 +1,13 @@
 import FadeIn from '../components/FadeIn'
+import Divider from '../components/Divider'
+import SectionHeading from '../components/SectionHeading'
 import { Mail, Phone, Linkedin, Github } from 'lucide-react'
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="relative py-24 md:py-32 px-6 md:px-10"
-      style={{ background: '#07070d' }}>
+    <section id="contact" className="relative py-24 md:py-32 px-6 md:px-10">
 
-      <div className="absolute top-0 left-6 right-6 md:left-10 md:right-10 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.3), transparent)' }} />
+      <Divider color="#10b981" />
 
       <div className="max-w-4xl mx-auto">
         <FadeIn delay={0} y={40}>
@@ -15,12 +15,7 @@ export default function ContactSection() {
             <div className="w-8 h-px bg-[#10b981]" />
             <span className="text-xs uppercase tracking-[0.3em] text-[#10b981] font-medium">Get In Touch</span>
           </div>
-          <h2
-            className="hero-heading font-black uppercase leading-none tracking-tight mb-6"
-            style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
-          >
-            Contact
-          </h2>
+          <SectionHeading className="mb-6">Contact</SectionHeading>
           <p className="text-[#c8d8e8] opacity-60 font-light leading-relaxed mb-16 max-w-lg"
             style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
             Looking for opportunities in software development, game dev, or design. Let&apos;s connect and build something great together.
@@ -36,7 +31,7 @@ export default function ContactSection() {
           ].map(({ icon: Icon, label, value, href, color }, i) => (
             <FadeIn key={label} delay={0.1 + i * 0.1} y={20}>
               <a href={href}
-                className="card-glass rounded-2xl p-6 flex items-center gap-4 group transition-all duration-300 hover:scale-[1.02]"
+                className="card-glass rounded-2xl p-6 flex items-center gap-4 group transition-transform duration-300 hover:scale-[1.02] will-change-transform"
                 style={{ border: `1px solid ${color}20` }}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -47,7 +42,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-xs uppercase tracking-[0.2em] font-medium opacity-40 text-[#c8d8e8] mb-1">{label}</div>
-                  <div className="text-[#c8d8e8] font-medium text-sm leading-snug">{value}</div>
+                  <div className="text-[#c8d8e8] font-medium text-sm leading-snug break-all">{value}</div>
                 </div>
               </a>
             </FadeIn>

@@ -1,63 +1,47 @@
 import { motion } from 'framer-motion'
 import ContactButton from '../components/ContactButton'
+import Magnetic from '../components/Magnetic'
+import { scrollTo as smoothScrollTo } from '../lib/smoothScroll'
+import ResumeButton from '../components/ResumeButton'
 
 const NAV_LINKS = ['About', 'Skills', 'Projects', 'Contact']
 
 export default function HeroSection() {
   const scrollTo = (id: string) => {
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
+    const el = document.getElementById(id.toLowerCase())
+    if (el) smoothScrollTo(el)
   }
 
   return (
-    <section className="relative h-screen flex flex-col overflow-hidden" style={{ background: '#050508' }}>
-
-      {/* ── Glow blobs ── */}
-      {/* Purple blob — left/center */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: '30%', left: '20%',
-          width: '420px', height: '420px',
-          background: 'radial-gradient(circle, rgba(100,40,200,0.55) 0%, transparent 70%)',
-          borderRadius: '50%',
-          filter: 'blur(8px)',
-        }}
-      />
-      {/* Teal blob — top right, large, matches screenshot */}
-      <div
-        className="absolute pointer-events-none pulse-glow"
-        style={{
-          top: '-5%', right: '5%',
-          width: '520px', height: '520px',
-          background: 'radial-gradient(circle, rgba(6,182,212,0.45) 0%, rgba(6,182,212,0.12) 45%, transparent 70%)',
-          borderRadius: '50%',
-          filter: 'blur(4px)',
-        }}
-      />
+    <section className="relative h-screen flex flex-col overflow-hidden">
 
       {/* ── Navbar ── */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="flex justify-between items-center px-8 md:px-12 pt-7 relative z-20"
+        className="flex justify-between items-center px-5 md:px-12 pt-6 md:pt-7 relative z-20"
       >
         <span className="text-sm font-semibold tracking-widest uppercase text-[#c8d8e8] opacity-60"></span>
-        <div className="flex gap-8 md:gap-14">
+        <div className="flex gap-5 sm:gap-8 md:gap-14">
           {NAV_LINKS.map(link => (
-            <button
-              key={link}
-              onClick={() => scrollTo(link)}
-              className="text-sm font-medium uppercase tracking-widest text-[#c8d8e8] opacity-60 hover:opacity-100 transition-opacity duration-200"
-            >
-              {link}
-            </button>
+            <Magnetic key={link} strength={0.25}>
+              <button
+                onClick={() => scrollTo(link)}
+                className="text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#c8d8e8] opacity-60 hover:opacity-100 transition-opacity duration-200"
+              >
+                {link}
+              </button>
+            </Magnetic>
           ))}
+          <Magnetic strength={0.25}>
+            <ResumeButton variant="link" className="hidden sm:inline-flex" />
+          </Magnetic>
         </div>
       </motion.nav>
 
       {/* ── Hero content ── */}
-      <div className="flex-1 flex flex-col justify-between px-8 md:px-12 pb-10 relative z-10">
+      <div className="flex-1 flex flex-col justify-between px-5 md:px-12 pb-8 md:pb-10 relative z-10">
 
         {/* Top block: eyebrow + MENURA */}
         <div className="mt-10 md:mt-14">
@@ -81,7 +65,7 @@ export default function HeroSection() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
               className="hero-heading font-black uppercase leading-none tracking-tight"
-              style={{ fontSize: 'clamp(5rem, 16vw, 10rem)', minHeight: '1em' }}
+              style={{ fontSize: 'clamp(3.5rem, 16vw, 10rem)', minHeight: '1em' }}
             >
               Menura
             </motion.h1>
@@ -96,10 +80,10 @@ export default function HeroSection() {
             transition={{ delay: 0.25, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
             style={{
               fontFamily: "'Caveat', cursive",
-              fontSize: 'clamp(3.5rem, 11vw, 9.5rem)',
+              fontSize: 'clamp(2.6rem, 11vw, 9.5rem)',
               color: '#06b6d4',
               lineHeight: 1.05,
-              marginLeft: 'clamp(120px, 22vw, 340px)',
+              marginLeft: 'clamp(16px, 22vw, 340px)',
               letterSpacing: '-0.01em',
             }}
           >
@@ -112,7 +96,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="flex items-end justify-between mt-6"
+          className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between mt-6"
         >
           {/* Left: I'M A + tagline stacked */}
           <div className="flex flex-col gap-1">
@@ -129,8 +113,11 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* Right: Contact button */}
-          <ContactButton />
+          {/* Right: CV + Contact */}
+          <div className="flex flex-wrap items-center gap-3">
+            <ResumeButton />
+            <ContactButton />
+          </div>
         </motion.div>
       </div>
 
@@ -139,7 +126,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.7 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 z-10"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#c8d8e8] opacity-30">Scroll</span>
         <div className="w-px h-12 relative overflow-hidden opacity-30">

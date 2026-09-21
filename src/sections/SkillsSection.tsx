@@ -1,4 +1,6 @@
 import FadeIn from '../components/FadeIn'
+import Divider from '../components/Divider'
+import SectionHeading from '../components/SectionHeading'
 
 const SKILL_GROUPS = [
   {
@@ -25,11 +27,9 @@ const SKILL_GROUPS = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="relative py-24 md:py-32 px-6 md:px-10"
-      style={{ background: '#07070d' }}>
+    <section id="skills" className="relative py-24 md:py-32 px-6 md:px-10">
 
-      <div className="absolute top-0 left-6 right-6 md:left-10 md:right-10 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(6,182,212,0.3), transparent)' }} />
+      <Divider color="#06b6d4" />
 
       <div className="max-w-6xl mx-auto">
         <FadeIn delay={0} y={40}>
@@ -37,12 +37,7 @@ export default function SkillsSection() {
             <div className="w-8 h-px bg-[#06b6d4]" />
             <span className="text-xs uppercase tracking-[0.3em] text-[#06b6d4] font-medium">Skills</span>
           </div>
-          <h2
-            className="hero-heading font-black uppercase leading-none tracking-tight mb-16 md:mb-24"
-            style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
-          >
-            Tech Arsenal
-          </h2>
+          <SectionHeading className="mb-16 md:mb-24">Tech Arsenal</SectionHeading>
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -5,6 +5,10 @@ import AboutSection from './sections/AboutSection'
 import SkillsSection from './sections/SkillsSection'
 import ProjectsSection from './sections/ProjectsSection'
 import ContactSection from './sections/ContactSection'
+import Grain from './components/Grain'
+import CursorGlitch from './components/CursorGlitch'
+import { startSmoothScroll, scrollTo } from './lib/smoothScroll'
+import BackgroundVideo from './components/BackgroundVideo'
 
 // ── Individual project pages ─────────────────────────────────────────────────
 // Add new project page imports here when you create more pages in src/Pages/
@@ -28,9 +32,11 @@ const PROJECT_PAGES: Record<string, React.ComponentType<{ onBack: () => void }>>
 export default function App() {
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
 
+  useEffect(() => { startSmoothScroll() }, [])
+
   // Scroll to top whenever the view changes
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollTo(0, true)
   }, [activeProjectId])
 
   // Keep the URL in sync so the browser back button works
@@ -54,7 +60,10 @@ export default function App() {
   const ActivePage = activeProjectId ? PROJECT_PAGES[activeProjectId] ?? null : null
 
   return (
-    <div style={{ overflowX: 'clip', background: '#050508' }}>
+    <div style={{ overflowX: 'clip' }}>
+      <BackgroundVideo />
+      <CursorGlitch />
+      <Grain />
       <AnimatePresence mode="wait">
         {ActivePage ? (
           <motion.div

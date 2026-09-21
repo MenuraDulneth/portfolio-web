@@ -2,6 +2,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
+import Divider from '../components/Divider'
+import SectionHeading from '../components/SectionHeading'
 import { PROJECTS, type Project } from '../data/projects'
 
 interface ProjectCardProps {
@@ -17,20 +19,27 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
   return (
     <motion.div
       ref={ref}
-      style={{ y, background: 'rgba(255,255,255,0.022)', border: `1px solid ${project.color}22` }}
+      style={{ y, borderColor: `${project.color}33` }}
       onClick={() => onOpen(project.id)}
       role="button"
       tabIndex={0}
       onKeyDown={e => e.key === 'Enter' && onOpen(project.id)}
-      className="group rounded-2xl md:rounded-3xl p-6 md:p-8 flex flex-col gap-5 h-full cursor-pointer
-                 transition-all duration-300 hover:scale-[1.02] focus:outline-none"
+      className="card-glass group rounded-2xl md:rounded-3xl p-6 md:p-8 flex flex-col gap-5 h-full cursor-pointer
+                 transition-transform duration-300 hover:scale-[1.02] will-change-transform focus:outline-none"
     >
       {/* Header row */}
       <div className="flex items-start justify-between">
         <div>
           <span className="text-xs uppercase tracking-[0.25em] font-medium opacity-50 text-[#c8d8e8]">{project.type}</span>
           <div className="mt-1">
-            <span className="font-black" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: `${project.color}28` }}>
+            <span
+              className="font-black transition-all duration-300 group-hover:brightness-125"
+              style={{
+                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                color: `${project.color}b3`,
+                textShadow: `0 0 24px ${project.color}66`,
+              }}
+            >
               {project.number}
             </span>
           </div>
@@ -91,11 +100,9 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ onOpenProject }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="relative py-24 md:py-32 px-6 md:px-10"
-      style={{ background: '#050508' }}>
+    <section id="projects" className="relative py-24 md:py-32 px-6 md:px-10">
 
-      <div className="absolute top-0 left-6 right-6 md:left-10 md:right-10 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.3), transparent)' }} />
+      <Divider color="#7c3aed" />
 
       <div className="max-w-6xl mx-auto">
         <FadeIn delay={0} y={40}>
@@ -104,12 +111,7 @@ export default function ProjectsSection({ onOpenProject }: ProjectsSectionProps)
             <span className="text-xs uppercase tracking-[0.3em] text-[#7c3aed] font-medium">Work</span>
           </div>
           <div className="flex items-end justify-between mb-16 md:mb-24">
-            <h2
-              className="hero-heading font-black uppercase leading-none tracking-tight"
-              style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
-            >
-              Projects
-            </h2>
+            <SectionHeading>Projects</SectionHeading>
             <span className="text-[#c8d8e8] opacity-25 text-sm font-light hidden md:block">
               Click any card to view details
             </span>
