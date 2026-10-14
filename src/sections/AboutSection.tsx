@@ -85,7 +85,7 @@ export default function AboutSection() {
               >
                 {/* Native aspect ratio — the whole photo, nothing cropped */}
                 <img
-                  src="/menura.webp"
+                  src="/menura.jpeg"
                   alt="Menura Wanniarachchi"
                   loading="lazy"
                   className="block w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
