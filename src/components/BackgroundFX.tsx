@@ -22,6 +22,7 @@ const FRAG = `
 precision highp float;
 uniform vec2  u_res;
 uniform float u_time;
+uniform float u_px;
 
 float hash(vec2 p) {
   return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
@@ -64,16 +65,28 @@ void main() {
   float cyan = pow(smoothstep(0.42, 0.95, d * d2 * 2.4), 1.8);
   c = mix(c, vec3(0.035, 0.660, 0.780), cyan * 0.70);
 
-  // Stars: one per cell of a coarse grid. Brightness varies per star but never
-  // over time — no twinkling. The grid is deliberately sparse, since at
-  // full-screen size a tight one reads as static rather than as a starfield.
-  vec2 cell = floor(gl_FragCoord.xy / 2.6);
+  // Stars: one per cell of a coarse grid, but drawn as a soft round point
+  // inside its cell rather than by lighting the whole cell. Filling the cell
+  // made every star a hard square, which on a high-DPI phone got upscaled into
+  // a clearly visible block. The cell is sized in CSS pixels (u_px converts to
+  // canvas pixels) so the density stays put at any render resolution.
+  float cellSize = 5.2 * u_px;
+  vec2 g = gl_FragCoord.xy / cellSize;
+  vec2 cell = floor(g);
   float h = hash(cell);
-  float star = step(0.9988, h);
-  c += star * vec3(0.55, 0.60, 0.78) * (0.45 + 0.55 * hash(cell + 3.7));
+  float present = step(0.9988, h);
+  // Jitter each star inside its cell so the grid never reads as a lattice.
+  vec2 jitter = vec2(hash(cell + 11.3), hash(cell + 27.1)) * 0.5 + 0.25;
+  float starDist = length(fract(g) - jitter);
+  float star = present * smoothstep(0.34, 0.0, starDist);
+  c += star * vec3(0.62, 0.68, 0.86) * (0.45 + 0.55 * hash(cell + 3.7));
 
   // Vignette so section text always has a darker surround.
   c *= 1.0 - 0.50 * length(uv - 0.5);
+
+  // A sub-LSB dither breaks up the banding that shows when these very dark,
+  // very gradual cloud ramps are stretched over a large screen.
+  c += (hash(gl_FragCoord.xy * 0.7) - 0.5) / 255.0;
 
   gl_FragColor = vec4(c, 1.0);
 }
@@ -91,8 +104,20 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
   return sh
 }
 
-const RES_SCALE = 0.5
+/**
+ * The shader used to render at a fixed half of the viewport, which on a large
+ * desktop is a sensible cost/quality trade but on a phone is tiny - and that
+ * small buffer then gets stretched across a 3x-density screen, so the cloud
+ * gradients band and every star blows up into a block. Budgeting total pixels
+ * instead lets a phone render at full CSS resolution while a 1080p desktop
+ * still lands on ~0.5, exactly where it was before.
+ */
+const PIXEL_BUDGET = 520_000
 const FPS = 30
+
+function renderScale(cssW: number, cssH: number) {
+  return Math.min(1, Math.sqrt(PIXEL_BUDGET / Math.max(1, cssW * cssH)))
+}
 
 export default function BackgroundFX() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -137,13 +162,18 @@ export default function BackgroundFX() {
 
     const uRes = gl.getUniformLocation(prog, 'u_res')
     const uTime = gl.getUniformLocation(prog, 'u_time')
+    const uPx = gl.getUniformLocation(prog, 'u_px')
 
     // The shader is drawing, so drop the CSS fallback paint behind it.
     wrap.classList.add('bg-fx-live')
 
+    let pxPerCss = 1
     const resize = () => {
-      const w = Math.max(1, Math.round(window.innerWidth * RES_SCALE))
-      const h = Math.max(1, Math.round(window.innerHeight * RES_SCALE))
+      const cssW = window.innerWidth
+      const cssH = window.innerHeight
+      pxPerCss = renderScale(cssW, cssH)
+      const w = Math.max(1, Math.round(cssW * pxPerCss))
+      const h = Math.max(1, Math.round(cssH * pxPerCss))
       if (canvas.width !== w || canvas.height !== h) {
         canvas.width = w
         canvas.height = h
@@ -161,6 +191,7 @@ export default function BackgroundFX() {
       resize()
       gl.uniform2f(uRes, canvas.width, canvas.height)
       gl.uniform1f(uTime, timeSec)
+      gl.uniform1f(uPx, pxPerCss)
       gl.drawArrays(gl.TRIANGLES, 0, 6)
     }
 
