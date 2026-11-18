@@ -22,6 +22,11 @@ export function startSmoothScroll(): Lenis | null {
   return lenis
 }
 
+/** The running Lenis instance, or null when smooth scrolling is off. */
+export function getLenis(): Lenis | null {
+  return lenis
+}
+
 /** Scroll to an element or absolute offset, through Lenis when it's active. */
 export function scrollTo(target: HTMLElement | number, immediate = false) {
   if (lenis) {

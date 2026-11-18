@@ -12,6 +12,7 @@ export default function ContactSection() {
       <div className="max-w-4xl mx-auto">
         <FadeIn delay={0} y={40}>
           <div className="flex items-center gap-3 mb-6">
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: '#10b981' }}>04</span>
             <div className="w-8 h-px bg-[#10b981]" />
             <span className="text-xs uppercase tracking-[0.3em] text-[#10b981] font-medium">Get In Touch</span>
           </div>

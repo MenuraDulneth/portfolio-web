@@ -6,9 +6,9 @@ import SkillsSection from './sections/SkillsSection'
 import ProjectsSection from './sections/ProjectsSection'
 import ContactSection from './sections/ContactSection'
 import Grain from './components/Grain'
-import CursorGlitch from './components/CursorGlitch'
 import { startSmoothScroll, scrollTo } from './lib/smoothScroll'
-import BackgroundVideo from './components/BackgroundVideo'
+import BackgroundFX from './components/BackgroundFX'
+import StickyNav from './components/StickyNav'
 
 // ── Individual project pages ─────────────────────────────────────────────────
 // Add new project page imports here when you create more pages in src/Pages/
@@ -61,8 +61,7 @@ export default function App() {
 
   return (
     <div style={{ overflowX: 'clip' }}>
-      <BackgroundVideo />
-      <CursorGlitch />
+      <BackgroundFX />
       <Grain />
       <AnimatePresence mode="wait">
         {ActivePage ? (
@@ -83,6 +82,7 @@ export default function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
+            <StickyNav />
             <HeroSection />
             <AboutSection />
             <SkillsSection />

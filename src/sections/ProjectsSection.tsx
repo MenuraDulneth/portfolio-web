@@ -107,6 +107,7 @@ export default function ProjectsSection({ onOpenProject }: ProjectsSectionProps)
       <div className="max-w-6xl mx-auto">
         <FadeIn delay={0} y={40}>
           <div className="flex items-center gap-3 mb-6">
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: '#7c3aed' }}>03</span>
             <div className="w-8 h-px bg-[#7c3aed]" />
             <span className="text-xs uppercase tracking-[0.3em] text-[#7c3aed] font-medium">Work</span>
           </div>

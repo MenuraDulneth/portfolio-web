@@ -19,6 +19,18 @@ body {
 
 body, #root { background: transparent; }
 
+/* ── Animated backdrop ──
+   .bg-fx paints a static gradient so there's never a bare black screen;
+   BackgroundFX adds .bg-fx-live once the shader is actually drawing. */
+.bg-fx {
+  background:
+    radial-gradient(55% 45% at 30% 35%, rgba(124, 58, 237, 0.20), transparent 70%),
+    radial-gradient(45% 40% at 72% 60%, rgba(37, 99, 235, 0.14), transparent 72%),
+    radial-gradient(40% 35% at 55% 18%, rgba(6, 182, 212, 0.10), transparent 70%),
+    #050508;
+}
+.bg-fx.bg-fx-live { background: #050508; }
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #050508; }
@@ -45,42 +57,38 @@ body, #root { background: transparent; }
 
 .card-glass {
   position: relative;
-  --mx: 50%;
-  --my: 50%;
   background: rgba(10, 10, 14, 0.86);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 40px rgba(0, 0, 0, 0.55);
+  transition: box-shadow 0.35s ease;
 }
+
+/* Hover: the edge lights up. Drawn as an overlaid ring rather than by changing
+   border-color, because several cards set their own border inline (per-group
+   colours) and an inline style would win over this rule. */
 .card-glass::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(
-    260px circle at var(--mx) var(--my),
-    rgba(124, 58, 237, 0.16),
-    rgba(6, 182, 212, 0.06) 45%,
-    transparent 70%
-  );
+  border: 1px solid rgba(124, 58, 237, 0.65);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
 .card-glass:hover::after { opacity: 1; }
+.card-glass:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    0 0 16px rgba(124, 58, 237, 0.30),
+    0 0 42px rgba(6, 182, 212, 0.12);
+}
 /* Opaque variant: same look, but immune to whatever the video is doing behind it */
 .card-solid { background: #0d0d13; }
 
-/* ── Cursor glitch canvas (pointer devices only) ── */
-.cursor-fx {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9997;
-}
+/* No hover ring on touch devices, where :hover can stick after a tap. */
 @media not ((hover: hover) and (pointer: fine)) {
-  .cursor-fx { display: none; }
   .card-glass::after { display: none; }
 }
 

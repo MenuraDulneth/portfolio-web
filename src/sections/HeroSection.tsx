@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import ContactButton from '../components/ContactButton'
-import Magnetic from '../components/Magnetic'
 import { scrollTo as smoothScrollTo } from '../lib/smoothScroll'
 import ResumeButton from '../components/ResumeButton'
 
@@ -25,18 +24,15 @@ export default function HeroSection() {
         <span className="text-sm font-semibold tracking-widest uppercase text-[#c8d8e8] opacity-60"></span>
         <div className="flex gap-5 sm:gap-8 md:gap-14">
           {NAV_LINKS.map(link => (
-            <Magnetic key={link} strength={0.25}>
-              <button
-                onClick={() => scrollTo(link)}
-                className="text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#c8d8e8] opacity-60 hover:opacity-100 transition-opacity duration-200"
-              >
-                {link}
-              </button>
-            </Magnetic>
+            <button
+              key={link}
+              onClick={() => scrollTo(link)}
+              className="text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#c8d8e8] opacity-60 hover:opacity-100 transition-opacity duration-200"
+            >
+              {link}
+            </button>
           ))}
-          <Magnetic strength={0.25}>
-            <ResumeButton variant="link" className="hidden sm:inline-flex" />
-          </Magnetic>
+          <ResumeButton variant="link" className="hidden sm:inline-flex" />
         </div>
       </motion.nav>
 

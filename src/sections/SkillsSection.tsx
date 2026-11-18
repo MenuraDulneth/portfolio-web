@@ -118,6 +118,7 @@ export default function SkillsSection() {
       <div className="max-w-6xl mx-auto">
         <FadeIn delay={0} y={40}>
           <div className="flex items-center gap-3 mb-6">
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: '#06b6d4' }}>02</span>
             <div className="w-8 h-px bg-[#06b6d4]" />
             <span className="text-xs uppercase tracking-[0.3em] text-[#06b6d4] font-medium">Skills</span>
           </div>
@@ -155,9 +156,9 @@ export default function SkillsSection() {
               <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#f59e0b]">Achievements &amp; Certificates</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {ACHIEVEMENTS.map(a => (
+              {ACHIEVEMENTS.map((a, i) => (
                 <div
-                  key={a.title + a.issuer}
+                  key={`${a.title}-${i}`}
                   className="rounded-xl p-4 flex items-start gap-3 transition-colors duration-300 hover:bg-white/[0.03]"
                   style={{
                     border: a.placeholder ? '1px dashed rgba(245,158,11,0.35)' : '1px solid rgba(255,255,255,0.06)',
