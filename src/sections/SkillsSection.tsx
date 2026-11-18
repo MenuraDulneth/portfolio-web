@@ -1,4 +1,4 @@
-import { Crown, Users, Lightbulb, MessageCircle, Clock, Award, type LucideIcon } from 'lucide-react'
+import { Crown, Users, Lightbulb, MessageCircle, Clock, Award, Trophy, type LucideIcon } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
 import Divider from '../components/Divider'
 import SectionHeading from '../components/SectionHeading'
@@ -65,15 +65,21 @@ const SKILL_GROUPS: { category: string; color: string; labelColor?: string; skil
 
 // Real ones first. The three PLACEHOLDER entries are layout slots — replace the text with real
 // certificates (or delete the lines); they're flagged visually until you do.
-const ACHIEVEMENTS: { title: string; issuer: string; placeholder?: boolean }[] = [
-  { title: 'Cambridge O-Level Certificate', issuer: 'Lyceum International School · 2023' },
-  { title: 'Foundation Certificate', issuer: 'Informatics Institute of Technology' },
-  { title: 'Python for Beginners', issuer: 'University of Moratuwa · e-certificate' },
-  { title: 'Web Design for Beginners', issuer: 'University of Moratuwa · e-certificate' },
-  { title: 'Python Programming', issuer: 'University of Moratuwa · e-certificate' },
-  { title: 'PLACEHOLDER — certificate name', issuer: 'Issuer · year', placeholder: true },
-  { title: 'PLACEHOLDER — certificate name', issuer: 'Issuer · year', placeholder: true },
-  { title: 'PLACEHOLDER — certificate name', issuer: 'Issuer · year', placeholder: true },
+type Achievement = {
+  title: string
+  issuer: string
+  icon: LucideIcon
+  color: string
+}
+
+const ACHIEVEMENTS: Achievement[] = [
+  { title: 'Cambridge O-Level Certificate', issuer: 'Lyceum International School · 2023', icon: Award, color: '#f59e0b' },
+  { title: 'Foundation Certificate', issuer: 'Informatics Institute of Technology', icon: Award, color: '#f59e0b' },
+  { title: 'Python Programming', issuer: 'University of Moratuwa · e-certificate', icon: Award, color: '#f59e0b' },
+  { title: 'Python for Beginners', issuer: 'University of Moratuwa · e-certificate', icon: Award, color: '#f59e0b' },
+  { title: 'Web Design for Beginners', issuer: 'University of Moratuwa · e-certificate', icon: Award, color: '#f59e0b' },
+  { title: 'Member, Rotaract Club of IIT', issuer: '2024 – Present', icon: Users, color: '#06b6d4' },
+  { title: 'School Badminton & Athletics Representative', issuer: 'Lyceum International School', icon: Trophy, color: '#10b981' },
 ]
 
 function SkillTile({ skill, color }: { skill: Skill; color: string }) {
@@ -157,25 +163,25 @@ export default function SkillsSection() {
               <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#f59e0b]">Achievements &amp; Certificates</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {ACHIEVEMENTS.map((a, i) => (
+              {ACHIEVEMENTS.map((a, i) => {
+                const Icon = a.icon
+                return (
                 <div
                   key={`${a.title}-${i}`}
                   className="rounded-xl p-4 flex items-start gap-3 transition-colors duration-300 hover:bg-white/[0.03]"
-                  style={{
-                    border: a.placeholder ? '1px dashed rgba(245,158,11,0.35)' : '1px solid rgba(255,255,255,0.06)',
-                    opacity: a.placeholder ? 0.6 : 1,
-                  }}
+                  style={{ border: '1px solid rgba(255,255,255,0.06)' }}
                 >
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.25)' }}>
-                    <Award size={15} className="text-[#f59e0b]" />
+                    style={{ background: `${a.color}1f`, border: `1px solid ${a.color}40` }}>
+                    <Icon size={15} style={{ color: a.color }} />
                   </div>
                   <div className="min-w-0">
                     <div className="text-sm text-[#e3ecf7] font-medium leading-snug">{a.title}</div>
                     <div className="text-xs text-[#e3ecf7] opacity-85 font-light mt-0.5 leading-snug">{a.issuer}</div>
                   </div>
                 </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </FadeIn>
