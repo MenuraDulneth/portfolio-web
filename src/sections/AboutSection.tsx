@@ -68,7 +68,7 @@ export default function AboutSection() {
                       className="accent-text font-black leading-none"
                       style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)' }}
                     />
-                    <span className="text-[#c8d8e8] text-[9px] uppercase tracking-[0.12em] opacity-50 font-medium whitespace-nowrap">
+                    <span className="text-[#c8d8e8] text-[10px] uppercase tracking-[0.12em] opacity-70 font-medium whitespace-nowrap">
                       {stat.label}
                     </span>
                   </div>
@@ -97,7 +97,7 @@ export default function AboutSection() {
                 <div className="absolute left-5 right-5 bottom-5 flex items-end justify-between">
                   <div>
                     <div className="text-[#c8d8e8] font-semibold text-base leading-tight">Menura Wanniarachchi</div>
-                    <div className="text-[#c8d8e8] opacity-50 text-xs uppercase tracking-[0.2em] mt-1">Colombo, Sri Lanka</div>
+                    <div className="text-[#c8d8e8] opacity-70 text-xs uppercase tracking-[0.2em] mt-1">Colombo, Sri Lanka</div>
                   </div>
                   <div className="w-2 h-2 rounded-full bg-[#10b981] shadow-[0_0_12px_rgba(16,185,129,0.8)]" title="Open to opportunities" />
                 </div>
@@ -122,11 +122,11 @@ export default function AboutSection() {
               <div className="flex flex-col gap-6">
                 <div>
                   <h3 className="text-[#c8d8e8] font-semibold text-base mb-1">University of Westminster | IIT Campus</h3>
-                  <p className="text-[#c8d8e8] opacity-50 text-sm font-light">B.Sc. (Hons) Computer Science · 2023 – Present</p>
+                  <p className="text-[#c8d8e8] opacity-70 text-sm font-light">B.Sc. (Hons) Computer Science · 2023 – Present</p>
                 </div>
                 <div>
                   <h3 className="text-[#c8d8e8] font-semibold text-base mb-1">Lyceum International School, Nugegoda</h3>
-                  <p className="text-[#c8d8e8] opacity-50 text-sm font-light">Cambridge O-Levels · 2023</p>
+                  <p className="text-[#c8d8e8] opacity-70 text-sm font-light">Cambridge O-Levels · 2023</p>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function AboutSection() {
               <div className="flex flex-col gap-6">
                 <div>
                   <h3 className="text-[#c8d8e8] font-semibold text-base mb-1">ITX360</h3>
-                  <p className="text-[#c8d8e8] opacity-50 text-sm font-light">Software Engineering Intern · 2026 – Present</p>
+                  <p className="text-[#c8d8e8] opacity-70 text-sm font-light">Software Engineering Intern · 2026 – Present</p>
                 </div>
               </div>
             </div>

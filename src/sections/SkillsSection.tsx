@@ -171,7 +171,7 @@ export default function SkillsSection() {
                   </div>
                   <div className="min-w-0">
                     <div className="text-sm text-[#c8d8e8] font-medium leading-snug">{a.title}</div>
-                    <div className="text-xs text-[#c8d8e8] opacity-45 font-light mt-0.5 leading-snug">{a.issuer}</div>
+                    <div className="text-xs text-[#c8d8e8] opacity-65 font-light mt-0.5 leading-snug">{a.issuer}</div>
                   </div>
                 </div>
               ))}

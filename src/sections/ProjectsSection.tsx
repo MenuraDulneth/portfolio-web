@@ -30,7 +30,7 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
       {/* Header row */}
       <div className="flex items-start justify-between">
         <div>
-          <span className="text-xs uppercase tracking-[0.25em] font-medium opacity-50 text-[#c8d8e8]">{project.type}</span>
+          <span className="text-xs uppercase tracking-[0.25em] font-medium opacity-70 text-[#c8d8e8]">{project.type}</span>
           <div className="mt-1">
             <span
               className="font-black transition-all duration-300 group-hover:brightness-125"
@@ -69,7 +69,7 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
       </h3>
 
       {/* Description */}
-      <p className="text-[#c8d8e8] font-light leading-relaxed opacity-55 flex-1"
+      <p className="text-[#c8d8e8] font-light leading-relaxed opacity-75 flex-1"
         style={{ fontSize: 'clamp(0.85rem, 1.3vw, 0.95rem)' }}>
         {project.description}
       </p>
@@ -82,7 +82,7 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
             {tag}
           </span>
         ))}
-        <span className="ml-auto text-xs text-[#c8d8e8] opacity-25 font-light self-center">{project.year}</span>
+        <span className="ml-auto text-xs text-[#c8d8e8] opacity-45 font-light self-center">{project.year}</span>
       </div>
 
       {/* Hover bottom bar */}
@@ -113,7 +113,7 @@ export default function ProjectsSection({ onOpenProject }: ProjectsSectionProps)
           </div>
           <div className="flex items-end justify-between mb-16 md:mb-24">
             <SectionHeading>Projects</SectionHeading>
-            <span className="text-[#c8d8e8] opacity-25 text-sm font-light hidden md:block">
+            <span className="text-[#c8d8e8] opacity-45 text-sm font-light hidden md:block">
               Click any card to view details
             </span>
           </div>

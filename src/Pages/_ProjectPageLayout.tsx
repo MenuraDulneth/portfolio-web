@@ -103,12 +103,12 @@ export default function ProjectPageLayout({
         >
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-[#c8d8e8] opacity-60 hover:opacity-100 transition-opacity duration-200 text-sm uppercase tracking-wider font-medium"
+            className="flex items-center gap-2 text-[#c8d8e8] opacity-80 hover:opacity-100 transition-opacity duration-200 text-sm uppercase tracking-wider font-medium"
           >
             <ArrowLeft size={16} />
             Back to Projects
           </button>
-          <span className="text-xs uppercase tracking-[0.3em] font-medium opacity-30 text-[#c8d8e8]">
+          <span className="text-xs uppercase tracking-[0.3em] font-medium opacity-50 text-[#c8d8e8]">
             {number} / {totalProjects}
           </span>
         </div>
@@ -196,7 +196,7 @@ export default function ProjectPageLayout({
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center gap-2.5">
                   <Icon size={14} style={{ color }} />
-                  <span className="text-xs uppercase tracking-[0.2em] text-[#c8d8e8] opacity-40 font-medium">
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#c8d8e8] opacity-60 font-medium">
                     {label}:
                   </span>
                   <span className="text-sm text-[#c8d8e8] font-medium">{value}</span>
@@ -369,7 +369,7 @@ export default function ProjectPageLayout({
                           style={{ border: `1px solid ${color}20` }}
                         />
                         {shot.caption && (
-                          <p className="text-xs text-[#c8d8e8] opacity-40 text-center">
+                          <p className="text-xs text-[#c8d8e8] opacity-60 text-center">
                             {shot.caption}
                           </p>
                         )}
@@ -408,7 +408,7 @@ export default function ProjectPageLayout({
                     { label: 'Role', value: role },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex flex-col gap-0.5">
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-[#c8d8e8] opacity-35 font-medium">
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-[#c8d8e8] opacity-55 font-medium">
                         {label}
                       </span>
                       <span className="text-sm text-[#c8d8e8] font-medium">{value}</span>
@@ -467,7 +467,7 @@ export default function ProjectPageLayout({
                   }}
                 />
                 <div>
-                  <div className="text-xs uppercase tracking-[0.2em] opacity-50 text-[#c8d8e8] font-medium mb-0.5">
+                  <div className="text-xs uppercase tracking-[0.2em] opacity-70 text-[#c8d8e8] font-medium mb-0.5">
                     Project Status
                   </div>
                   <div
@@ -527,7 +527,7 @@ export default function ProjectPageLayout({
         {/* ── Bottom nav ───────────────────────────────────────────────────── */}
         <div className="px-6 md:px-10 pb-16 border-t border-white/5 pt-10">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.3em] text-[#c8d8e8] opacity-30 mb-6 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-[#c8d8e8] opacity-50 mb-6 text-center">
               More Projects
             </p>
             <button

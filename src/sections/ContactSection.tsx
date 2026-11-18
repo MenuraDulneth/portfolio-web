@@ -17,7 +17,7 @@ export default function ContactSection() {
             <span className="text-xs uppercase tracking-[0.3em] text-[#10b981] font-medium">Get In Touch</span>
           </div>
           <SectionHeading className="mb-6">Contact</SectionHeading>
-          <p className="text-[#c8d8e8] opacity-60 font-light leading-relaxed mb-16 max-w-lg"
+          <p className="text-[#c8d8e8] opacity-80 font-light leading-relaxed mb-16 max-w-lg"
             style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
             Looking for opportunities in software development, game dev, or design. Let&apos;s connect and build something great together.
           </p>
@@ -42,7 +42,7 @@ export default function ContactSection() {
                   <Icon size={20} style={{ color }} />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-[0.2em] font-medium opacity-40 text-[#c8d8e8] mb-1">{label}</div>
+                  <div className="text-xs uppercase tracking-[0.2em] font-medium opacity-60 text-[#c8d8e8] mb-1">{label}</div>
                   <div className="text-[#c8d8e8] font-medium text-sm leading-snug break-all">{value}</div>
                 </div>
               </a>
@@ -53,7 +53,7 @@ export default function ContactSection() {
         {/* Footer */}
         <FadeIn delay={0.5} y={20}>
           <div className="text-center pt-8 border-t border-white/5">
-            <p className="text-[#c8d8e8] opacity-25 text-xs uppercase tracking-[0.2em] font-light">
+            <p className="text-[#c8d8e8] opacity-45 text-xs uppercase tracking-[0.2em] font-light">
               © 2026 Menura Wanniarachchi · Built with React & Framer Motion
             </p>
           </div>

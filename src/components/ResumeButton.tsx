@@ -15,7 +15,7 @@ export default function ResumeButton({ variant = 'pill', className = '' }: Resum
       <a
         href={RESUME_URL}
         download
-        className={`inline-flex items-center gap-1.5 text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#c8d8e8] opacity-60 hover:opacity-100 transition-opacity duration-200 ${className}`}
+        className={`inline-flex items-center gap-1.5 text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#c8d8e8] opacity-80 hover:opacity-100 transition-opacity duration-200 ${className}`}
       >
         <Download size={13} />
         CV
