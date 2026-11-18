@@ -15,7 +15,7 @@ export default function ResumeButton({ variant = 'pill', className = '' }: Resum
       <a
         href={RESUME_URL}
         download
-        className={`inline-flex items-center gap-1.5 text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#c8d8e8] opacity-80 hover:opacity-100 transition-opacity duration-200 ${className}`}
+        className={`inline-flex items-center gap-1.5 text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#e3ecf7] opacity-95 hover:opacity-100 transition-opacity duration-200 ${className}`}
       >
         <Download size={13} />
         CV
@@ -27,7 +27,7 @@ export default function ResumeButton({ variant = 'pill', className = '' }: Resum
     <a
       href={RESUME_URL}
       download
-      className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full whitespace-nowrap font-medium uppercase tracking-widest text-sm text-[#c8d8e8] transition-all duration-300 hover:text-white hover:border-[#06b6d4]/60 hover:shadow-[0_0_24px_rgba(6,182,212,0.25)] ${className}`}
+      className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full whitespace-nowrap font-medium uppercase tracking-widest text-sm text-[#e3ecf7] transition-all duration-300 hover:text-white hover:border-[#06b6d4]/60 hover:shadow-[0_0_24px_rgba(6,182,212,0.25)] ${className}`}
       style={{ border: '1px solid rgba(200,216,232,0.25)', background: 'rgba(10,10,14,0.5)' }}
     >
       <Download size={15} />

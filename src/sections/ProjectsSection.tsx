@@ -30,13 +30,13 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
       {/* Header row */}
       <div className="flex items-start justify-between">
         <div>
-          <span className="text-xs uppercase tracking-[0.25em] font-medium opacity-70 text-[#c8d8e8]">{project.type}</span>
+          <span className="text-xs uppercase tracking-[0.25em] font-medium opacity-85 text-[#e3ecf7]">{project.type}</span>
           <div className="mt-1">
             <span
               className="font-black transition-all duration-300 group-hover:brightness-125"
               style={{
                 fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-                color: `${project.color}d9`,
+                color: lighten(project.color, 0.25),
                 textShadow: `0 0 24px ${project.color}66`,
               }}
             >
@@ -69,7 +69,7 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
       </h3>
 
       {/* Description */}
-      <p className="text-[#c8d8e8] font-light leading-relaxed opacity-75 flex-1"
+      <p className="text-[#e3ecf7] font-light leading-relaxed opacity-90 flex-1"
         style={{ fontSize: 'clamp(0.85rem, 1.3vw, 0.95rem)' }}>
         {project.description}
       </p>
@@ -78,11 +78,11 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
       <div className="flex flex-wrap gap-2 mt-auto">
         {project.tags.map(tag => (
           <span key={tag} className="px-2.5 py-1 rounded-full text-xs font-medium"
-            style={{ background: `${project.color}15`, color: project.color, border: `1px solid ${project.color}25` }}>
+            style={{ background: `${project.color}15`, color: lighten(project.color, 0.45), border: `1px solid ${project.color}25` }}>
             {tag}
           </span>
         ))}
-        <span className="ml-auto text-xs text-[#c8d8e8] opacity-60 font-light self-center">{project.year}</span>
+        <span className="ml-auto text-xs text-[#e3ecf7] opacity-80 font-light self-center">{project.year}</span>
       </div>
 
       {/* Hover bottom bar */}
@@ -98,6 +98,18 @@ interface ProjectsSectionProps {
   onOpenProject: (id: string) => void
 }
 
+/**
+ * Mixes a project's accent toward white. The raw accents are saturated enough
+ * to look good as a border or glow, but too dark to read as small text on a
+ * dark card - this keeps the hue and lifts the lightness.
+ */
+function lighten(hex: string, amt: number) {
+  const n = parseInt(hex.slice(1), 16)
+  const mix = (c: number) => Math.round(c + (255 - c) * amt)
+  const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(mix)
+  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`
+}
+
 export default function ProjectsSection({ onOpenProject }: ProjectsSectionProps) {
   return (
     <section id="projects" className="relative py-24 md:py-32 px-6 md:px-10">
@@ -107,13 +119,13 @@ export default function ProjectsSection({ onOpenProject }: ProjectsSectionProps)
       <div className="max-w-6xl mx-auto">
         <FadeIn delay={0} y={40}>
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: '#7c3aed' }}>03</span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: '#a78bfa' }}>03</span>
             <div className="w-8 h-px bg-[#7c3aed]" />
-            <span className="text-xs uppercase tracking-[0.3em] text-[#7c3aed] font-medium">Work</span>
+            <span className="text-xs uppercase tracking-[0.3em] text-[#a78bfa] font-medium">Work</span>
           </div>
           <div className="flex items-end justify-between mb-16 md:mb-24">
             <SectionHeading>Projects</SectionHeading>
-            <span className="text-[#c8d8e8] opacity-60 text-sm font-light hidden md:block">
+            <span className="text-[#e3ecf7] opacity-80 text-sm font-light hidden md:block">
               Click any card to view details
             </span>
           </div>

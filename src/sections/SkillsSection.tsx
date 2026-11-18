@@ -13,10 +13,11 @@ interface Skill {
   lucide?: LucideIcon  // for soft skills (no brand logo)
 }
 
-const SKILL_GROUPS: { category: string; color: string; skills: Skill[] }[] = [
+const SKILL_GROUPS: { category: string; color: string; labelColor?: string; skills: Skill[] }[] = [
   {
     category: 'Languages',
     color: '#7c3aed',
+    labelColor: '#a78bfa',
     skills: [
       { name: 'Python', icon: 'python/python-original' },
       { name: 'Java', icon: 'java/java-original' },
@@ -102,7 +103,7 @@ function SkillTile({ skill, color }: { skill: Skill; color: string }) {
         )}
       </div>
       {/* Floating label: absolutely positioned so it never affects the grid */}
-      <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 text-[10px] uppercase tracking-[0.15em] text-[#c8d8e8] opacity-0 group-hover/tile:opacity-70 transition-opacity duration-300 whitespace-nowrap">
+      <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 text-[10px] uppercase tracking-[0.15em] text-[#e3ecf7] opacity-0 group-hover/tile:opacity-70 transition-opacity duration-300 whitespace-nowrap">
         {skill.name}
       </span>
     </div>
@@ -133,7 +134,7 @@ export default function SkillsSection() {
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-2 h-2 rounded-full" style={{ background: group.color }} />
                   <span className="text-xs uppercase tracking-[0.25em] font-semibold"
-                    style={{ color: group.color }}>
+                    style={{ color: group.labelColor || group.color }}>
                     {group.category}
                   </span>
                 </div>
@@ -170,8 +171,8 @@ export default function SkillsSection() {
                     <Award size={15} className="text-[#f59e0b]" />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-sm text-[#c8d8e8] font-medium leading-snug">{a.title}</div>
-                    <div className="text-xs text-[#c8d8e8] opacity-65 font-light mt-0.5 leading-snug">{a.issuer}</div>
+                    <div className="text-sm text-[#e3ecf7] font-medium leading-snug">{a.title}</div>
+                    <div className="text-xs text-[#e3ecf7] opacity-85 font-light mt-0.5 leading-snug">{a.issuer}</div>
                   </div>
                 </div>
               ))}

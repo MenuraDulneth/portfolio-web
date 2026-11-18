@@ -88,7 +88,7 @@ export default function StickyNav() {
                   key={s.id}
                   onClick={() => go(s.id)}
                   className="relative px-2.5 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-medium uppercase tracking-[0.12em] sm:tracking-[0.18em] transition-colors duration-300"
-                  style={{ color: on ? '#ffffff' : 'rgba(200, 216, 232, 0.55)' }}
+                  style={{ color: on ? '#ffffff' : 'rgba(227, 236, 247, 0.78)' }}
                 >
                   {on && (
                     <motion.span
@@ -112,7 +112,7 @@ export default function StickyNav() {
               href={RESUME_URL}
               download
               title="Download CV"
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] text-[#c8d8e8] opacity-70 hover:opacity-100 transition-opacity duration-200"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] text-[#e3ecf7] opacity-85 hover:opacity-100 transition-opacity duration-200"
             >
               <Download size={12} />
               CV

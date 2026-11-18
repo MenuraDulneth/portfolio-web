@@ -21,13 +21,13 @@ export default function HeroSection() {
         transition={{ duration: 0.7 }}
         className="flex justify-between items-center px-5 md:px-12 pt-6 md:pt-7 relative z-20"
       >
-        <span className="text-sm font-semibold tracking-widest uppercase text-[#c8d8e8] opacity-80"></span>
+        <span className="text-sm font-semibold tracking-widest uppercase text-[#e3ecf7] opacity-95"></span>
         <div className="flex gap-5 sm:gap-8 md:gap-14">
           {NAV_LINKS.map(link => (
             <button
               key={link}
               onClick={() => scrollTo(link)}
-              className="text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#c8d8e8] opacity-80 hover:opacity-100 transition-opacity duration-200"
+              className="text-[11px] sm:text-sm font-medium uppercase tracking-widest text-[#e3ecf7] opacity-95 hover:opacity-100 transition-opacity duration-200"
             >
               {link}
             </button>
@@ -49,7 +49,7 @@ export default function HeroSection() {
             className="flex items-center gap-3 mb-5 sm:mb-10"
           >
             <div className="w-8 h-px bg-[#7c3aed]" />
-            <span className="text-xs uppercase tracking-[0.3em] text-[#7c3aed] font-medium">
+            <span className="text-xs uppercase tracking-[0.3em] text-[#a78bfa] font-medium">
               Computer Science Undergraduate
             </span>
           </motion.div>
@@ -97,12 +97,12 @@ export default function HeroSection() {
           {/* Left: I'M A + tagline stacked */}
           <div className="flex flex-col gap-1">
             <span
-              className="text-[#c8d8e8] font-light uppercase tracking-widest opacity-60"
+              className="text-[#e3ecf7] font-light uppercase tracking-widest opacity-80"
               style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.05rem)' }}
             >
             </span>
             <p
-              className="text-[#c8d8e8] font-light uppercase tracking-wide leading-snug opacity-75"
+              className="text-[#e3ecf7] font-light uppercase tracking-wide leading-snug opacity-90"
               style={{ fontSize: 'clamp(0.8rem, 1.1vw, 0.95rem)', maxWidth: '260px' }}
             >
               Crafting immersive experiences<br />through code, design &amp; games...
@@ -124,8 +124,8 @@ export default function HeroSection() {
         transition={{ delay: 1.2, duration: 0.7 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 z-10"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-[#c8d8e8] opacity-50">Scroll</span>
-        <div className="w-px h-12 relative overflow-hidden opacity-50">
+        <span className="text-[10px] uppercase tracking-[0.3em] text-[#e3ecf7] opacity-75">Scroll</span>
+        <div className="w-px h-12 relative overflow-hidden opacity-75">
           <motion.div
             className="absolute inset-x-0 bg-gradient-to-b from-[#7c3aed] to-transparent"
             animate={{ y: ['-100%', '200%'] }}

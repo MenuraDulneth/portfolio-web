@@ -62,6 +62,14 @@ export interface ProjectPageProps {
   onBack: () => void
 }
 
+/** Mixes an accent toward white so it reads on a dark page. See ProjectsSection. */
+function lighten(hex: string, amt: number) {
+  const n = parseInt(hex.slice(1), 16)
+  const mix = (c: number) => Math.round(c + (255 - c) * amt)
+  const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(mix)
+  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`
+}
+
 export default function ProjectPageLayout({
   number,
   name,
@@ -103,12 +111,12 @@ export default function ProjectPageLayout({
         >
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-[#c8d8e8] opacity-80 hover:opacity-100 transition-opacity duration-200 text-sm uppercase tracking-wider font-medium"
+            className="flex items-center gap-2 text-[#e3ecf7] opacity-95 hover:opacity-100 transition-opacity duration-200 text-sm uppercase tracking-wider font-medium"
           >
             <ArrowLeft size={16} />
             Back to Projects
           </button>
-          <span className="text-xs uppercase tracking-[0.3em] font-medium opacity-50 text-[#c8d8e8]">
+          <span className="text-xs uppercase tracking-[0.3em] font-medium opacity-75 text-[#e3ecf7]">
             {number} / {totalProjects}
           </span>
         </div>
@@ -161,7 +169,7 @@ export default function ProjectPageLayout({
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.05, duration: 0.8 }}
                 className="font-black leading-none select-none hidden sm:block"
-                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)', color: `${color}d9`, textShadow: `0 0 40px ${color}66` }}
+                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)', color: lighten(color, 0.25), textShadow: `0 0 40px ${color}66` }}
               >
                 {number}
               </motion.span>
@@ -194,10 +202,10 @@ export default function ProjectPageLayout({
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center gap-2.5">
                   <Icon size={14} style={{ color }} />
-                  <span className="text-xs uppercase tracking-[0.2em] text-[#c8d8e8] opacity-60 font-medium">
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#e3ecf7] opacity-80 font-medium">
                     {label}:
                   </span>
-                  <span className="text-sm text-[#c8d8e8] font-medium">{value}</span>
+                  <span className="text-sm text-[#e3ecf7] font-medium">{value}</span>
                 </div>
               ))}
             </motion.div>
@@ -255,7 +263,7 @@ export default function ProjectPageLayout({
                     className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-200 hover:scale-105"
                     style={{
                       background: 'rgba(255,255,255,0.06)',
-                      color: '#c8d8e8',
+                      color: '#e3ecf7',
                       border: '1px solid rgba(255,255,255,0.1)',
                     }}
                   >
@@ -292,7 +300,7 @@ export default function ProjectPageLayout({
                   </span>
                 </div>
                 <p
-                  className="text-[#c8d8e8] font-light leading-relaxed opacity-80"
+                  className="text-[#e3ecf7] font-light leading-relaxed opacity-95"
                   style={{ fontSize: 'clamp(0.95rem, 1.4vw, 1.05rem)' }}
                 >
                   {longDescription}
@@ -332,7 +340,7 @@ export default function ProjectPageLayout({
                         className="mt-0.5 flex-shrink-0"
                         style={{ color }}
                       />
-                      <span className="text-[#c8d8e8] font-light leading-relaxed opacity-75 text-sm">
+                      <span className="text-[#e3ecf7] font-light leading-relaxed opacity-90 text-sm">
                         {point}
                       </span>
                     </motion.li>
@@ -367,7 +375,7 @@ export default function ProjectPageLayout({
                           style={{ border: `1px solid ${color}20` }}
                         />
                         {shot.caption && (
-                          <p className="text-xs text-[#c8d8e8] opacity-60 text-center">
+                          <p className="text-xs text-[#e3ecf7] opacity-80 text-center">
                             {shot.caption}
                           </p>
                         )}
@@ -406,10 +414,10 @@ export default function ProjectPageLayout({
                     { label: 'Role', value: role },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex flex-col gap-0.5">
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-[#c8d8e8] opacity-55 font-medium">
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-[#e3ecf7] opacity-80 font-medium">
                         {label}
                       </span>
-                      <span className="text-sm text-[#c8d8e8] font-medium">{value}</span>
+                      <span className="text-sm text-[#e3ecf7] font-medium">{value}</span>
                     </div>
                   ))}
                 </div>
@@ -441,7 +449,7 @@ export default function ProjectPageLayout({
                         className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                         style={{ background: color }}
                       />
-                      <span className="text-sm text-[#c8d8e8] font-medium">{tag}</span>
+                      <span className="text-sm text-[#e3ecf7] font-medium">{tag}</span>
                     </div>
                   ))}
                 </div>
@@ -465,7 +473,7 @@ export default function ProjectPageLayout({
                   }}
                 />
                 <div>
-                  <div className="text-xs uppercase tracking-[0.2em] opacity-70 text-[#c8d8e8] font-medium mb-0.5">
+                  <div className="text-xs uppercase tracking-[0.2em] opacity-85 text-[#e3ecf7] font-medium mb-0.5">
                     Project Status
                   </div>
                   <div
@@ -499,7 +507,7 @@ export default function ProjectPageLayout({
                       href={liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-[#c8d8e8] opacity-70 hover:opacity-100 transition-opacity"
+                      className="flex items-center gap-2 text-sm text-[#e3ecf7] opacity-85 hover:opacity-100 transition-opacity"
                     >
                       <ExternalLink size={13} style={{ color }} />
                       Live Website
@@ -510,7 +518,7 @@ export default function ProjectPageLayout({
                       href={sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-[#c8d8e8] opacity-70 hover:opacity-100 transition-opacity"
+                      className="flex items-center gap-2 text-sm text-[#e3ecf7] opacity-85 hover:opacity-100 transition-opacity"
                     >
                       <ExternalLink size={13} style={{ color }} />
                       Source Code
@@ -525,12 +533,12 @@ export default function ProjectPageLayout({
         {/* ── Bottom nav ───────────────────────────────────────────────────── */}
         <div className="px-6 md:px-10 pb-16 border-t border-white/5 pt-10">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.3em] text-[#c8d8e8] opacity-50 mb-6 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-[#e3ecf7] opacity-75 mb-6 text-center">
               More Projects
             </p>
             <button
               onClick={onBack}
-              className="card-glass card-solid w-full flex items-center justify-center gap-2 py-4 rounded-2xl text-sm font-medium uppercase tracking-widest text-[#c8d8e8] transition-all duration-300 hover:scale-[1.01]"
+              className="card-glass card-solid w-full flex items-center justify-center gap-2 py-4 rounded-2xl text-sm font-medium uppercase tracking-widest text-[#e3ecf7] transition-all duration-300 hover:scale-[1.01]"
             >
               <ArrowLeft size={14} />
               Back to all projects
