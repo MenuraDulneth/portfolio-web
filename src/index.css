@@ -37,7 +37,7 @@ body, #root { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 2px; }
 
 .hero-heading {
-  background: linear-gradient(160deg, #8795a8 0%, #e4eef8 55%, #b4c6d8 100%);
+  background: linear-gradient(160deg, #d5e2f0 0%, #ffffff 48%, #c9d9ea 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

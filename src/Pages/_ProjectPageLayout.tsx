@@ -161,7 +161,7 @@ export default function ProjectPageLayout({
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.05, duration: 0.8 }}
                 className="font-black leading-none select-none hidden sm:block"
-                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)', color: `${color}b3`, textShadow: `0 0 40px ${color}66` }}
+                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)', color: `${color}d9`, textShadow: `0 0 40px ${color}66` }}
               >
                 {number}
               </motion.span>
@@ -172,7 +172,7 @@ export default function ProjectPageLayout({
                 className="font-black uppercase leading-none tracking-tight break-words min-w-0"
                 style={{
                   fontSize: 'clamp(2.25rem, 7vw, 6rem)',
-                  background: `linear-gradient(160deg, #4a4f5e 0%, #c8d8e8 60%, ${color}99 100%)`,
+                  background: `linear-gradient(160deg, #d5e2f0 0%, #ffffff 45%, ${color} 100%)`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
