@@ -36,7 +36,7 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
               className="font-black transition-all duration-300 group-hover:brightness-125"
               style={{
                 fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-                color: `${project.color}b3`,
+                color: `${project.color}d9`,
                 textShadow: `0 0 24px ${project.color}66`,
               }}
             >
@@ -82,7 +82,7 @@ function ProjectCard({ project, onOpen }: ProjectCardProps) {
             {tag}
           </span>
         ))}
-        <span className="ml-auto text-xs text-[#c8d8e8] opacity-45 font-light self-center">{project.year}</span>
+        <span className="ml-auto text-xs text-[#c8d8e8] opacity-60 font-light self-center">{project.year}</span>
       </div>
 
       {/* Hover bottom bar */}
@@ -113,7 +113,7 @@ export default function ProjectsSection({ onOpenProject }: ProjectsSectionProps)
           </div>
           <div className="flex items-end justify-between mb-16 md:mb-24">
             <SectionHeading>Projects</SectionHeading>
-            <span className="text-[#c8d8e8] opacity-45 text-sm font-light hidden md:block">
+            <span className="text-[#c8d8e8] opacity-60 text-sm font-light hidden md:block">
               Click any card to view details
             </span>
           </div>
