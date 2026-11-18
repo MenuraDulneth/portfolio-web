@@ -172,10 +172,8 @@ export default function ProjectPageLayout({
                 className="font-black uppercase leading-none tracking-tight break-words min-w-0"
                 style={{
                   fontSize: 'clamp(2.25rem, 7vw, 6rem)',
-                  background: `linear-gradient(160deg, #d5e2f0 0%, #ffffff 45%, ${color} 100%)`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: '#eef4fc',
+                  WebkitTextFillColor: '#eef4fc',
                 }}
               >
                 {name}
